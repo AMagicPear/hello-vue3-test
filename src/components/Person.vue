@@ -1,35 +1,45 @@
 <template>
     <div class="person">
-        <h2>姓名：{{ name }}</h2>
-        <h2>年龄：{{ age }}</h2>
-        <h2>地址：{{ address }}</h2>
-        <button @click="changeName">修改名字</button>
-        <button @click="changeAge">修改年龄</button>
-        <button @click="showTel">查看联系方式</button>
+        <h2>一辆{{ car.brand }}车，价值{{ car.price }}万</h2>
+        <button @click="changeBrand">修改汽车的品牌</button>
+        <button @click="changePrice">修改汽车的价格</button>
+        <button @click="changeCar">修改汽车</button>
     </div>
+    <h2>当前求和为：{{ sum }}</h2>
+    <button @click="changeSum">点我sum+1</button>
 </template>
 
 <script lang="ts" setup name="Person">
-import { ref } from 'vue'
-let name = ref('张三')
-let age = ref(18)
-let tel = '13888888888'
-let address = '南京邮电大学'
-function changeName() {
-    name.value = 'zhang-san'
+import { ref, reactive } from 'vue'
+//数据
+let car = reactive({ brand: '奔驰', price: 100 })
+let sum = ref(0)
+let isBenchi = 1;
+function changePrice() {
+    car.price += 10
 }
-function changeAge() {
-    age.value += 1
+function changeSum(){
+    sum.value +=1
 }
-function showTel() {
-    alert(tel)
+function changeBrand(){
+    console.log(isBenchi);
+    isBenchi = -isBenchi;
+    console.log(isBenchi);
+    car.brand = isBenchi>0?'奔驰':'宝马'
+    console.log(car.brand);
+}
+
+function changeCar(){
+    // car = {brand:'aaa',price:1}
+    Object.assign(car,{brand:'aaa',price:1})
 }
 
 </script>
 
 <style scoped>
 .person {
-    background-color: aqua;
+    background-color: rgb(226, 241, 225);
+    border-radius: 10px;
 }
 
 button {
