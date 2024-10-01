@@ -1,18 +1,17 @@
 <template>
   <div class="person">
-    <h1>中国</h1>
-    <h2 ref="beijing">北京</h2>
-    <h3>尚硅谷</h3>
-    <button @click="showLog">点我输出h2这个元素</button>
+
   </div>
 </template>
 
 <script lang="ts" setup name="Person">
-import {ref} from 'vue'
-let beijing = ref(null)
-function showLog(){
-  console.log(beijing.value)
-}
+import { type PersonInter} from "@/types/index";
+// let person:PersonInter = {id:'dsfghsrht',name:'张三',age:60}
+let personList:PersonInter[] = [
+  { id: 'akhdfkd', name: '小狗', age: 60 },
+  { id: 'shi', name: '小兔', age: 18 },
+  { id: 'jjkwfje', name: '小羊', age: 5 }
+]
 </script>
 
 <style scoped>
