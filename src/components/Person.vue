@@ -1,17 +1,21 @@
 <template>
   <div class="person">
-
+    <ul>
+      <li v-for="item in list" :key="item.id">
+        {{ item.name }} -- {{ item.age }}岁
+      </li>
+    </ul>
   </div>
 </template>
 
 <script lang="ts" setup name="Person">
-import { type PersonInter} from "@/types/index";
-// let person:PersonInter = {id:'dsfghsrht',name:'张三',age:60}
-let personList:PersonInter[] = [
-  { id: 'akhdfkd', name: '小狗', age: 60 },
-  { id: 'shi', name: '小兔', age: 18 },
-  { id: 'jjkwfje', name: '小羊', age: 5 }
-]
+import { type Persons } from '@/types';
+//defineProps(['list']); //只接收list
+//接收list+限制类型
+withDefaults(defineProps<{ list?: Persons }>(), {
+  list:()=> [{ id: 'aaaaaa', name: '康师傅', age: 19 }]
+})
+
 </script>
 
 <style scoped>
