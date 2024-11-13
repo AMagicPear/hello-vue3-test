@@ -6,6 +6,7 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/hello-vue3-test/',
   plugins: [
     vue(),
     vueSetupExtend()
